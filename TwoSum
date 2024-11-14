@@ -18,7 +18,8 @@ class Solution {
             int numberToFind=target-nums[i];
             if(map.containsKey(numberToFind)){
                 return new int[]{map.get(numberToFind),i};
-            } map.put(nums[i], i); //Lưu giá trị vào HashMap} map.put(nums[i], i);
+            } 
+            map.put(nums[i], i); //Lưu giá trị vào HashMap} map.put(nums[i], i);
         }
         return new int[]{}; // Trả về một mảng trống nếu không tìm thấy cặp nào
     }
