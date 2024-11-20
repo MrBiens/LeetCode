@@ -15,6 +15,8 @@ class romanToInt {
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
 
+
+
         int result = 0;
         for (int i = 0; i < s.length(); i++) {
             // Lấy giá trị hiện tại
