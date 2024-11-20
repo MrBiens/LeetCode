@@ -9,9 +9,9 @@ public class _14_LongestCommonPrefix {
 
             // i = 1; flower = flow ; i = 2 flow = fl
             for (int i = 1; i < strs.length; i++) {
-                while (strs[i].indexOf(prefix) != 0) { // khi chưa tìm thấy sẽ return -1 - tìm thấy sẽ return 0
-                    // Reduce the prefix by one character at a time
-                    prefix = prefix.substring(0, prefix.length() - 1); // sau mỗi lần không tìm thấy length sẽ -1
+                while (strs[i].indexOf(prefix) != 0) { // khi chưa tìm thấy sẽ return -1(base indexOf) - tìm thấy sẽ return 0
+                    // sau mỗi lần không tìm thấy length sẽ -1
+                    prefix = prefix.substring(0, prefix.length() - 1);  // vd step 1 : 0,6 ( 6 là điểm kết thúc nên sẽ cut 0-5)
                     if (prefix.isEmpty()) return "";
                 }
             }
