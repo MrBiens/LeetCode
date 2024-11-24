@@ -15,7 +15,6 @@ public class _14_LongestCommonPrefix {
                     if (prefix.isEmpty()) return "";
                 }
             }
-
             return prefix;
         }
 
