@@ -10,12 +10,12 @@ public class _20_ValidParentheses {
             char current = s.charAt(i);
 
             if (current == '{' || current == '[' || current == '(') {
-                stack.push(current);
+                stack.push(current); // đẩy nó vào stack
             } else {
                 if (stack.isEmpty()) {
                     return false;
                 }
-                // pop lấy phần tử ở vị trí đầu tiên trên stack
+                // pop lấy phần tử ở vị trí đầu tiên trên stack và xóa nó đi
                 char top = stack.pop();
                 if ((current == '}' && top != '{') ||
                         (current == ']' && top != '[') ||
@@ -24,7 +24,7 @@ public class _20_ValidParentheses {
                 }
             }
         }
-
+        // bởi vì tất cả đã được lấy ra nên stack sẽ null và isEmpty = true
         return stack.isEmpty();
     }
 
