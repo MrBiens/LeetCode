@@ -1,0 +1,56 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        //cach 1
+        return haystack.indexOf(needle);
+
+        // cach 2
+        int n = haystack.length(), m = needle.length();
+        for(int i = 0;i <= n-m;i++){
+            if(haystack.substring(i,i+m).equals(needle)){
+                return 0;
+            }
+        }
+        return -1;
+        //cach3
+          // Bước 1: Tạo mảng LPS
+    private static int[] computeLPS(String pattern) {
+        int m = pattern.length();
+        int[] lps = new int[m];
+        int j = 0; // Độ dài của prefix match trước đó
+
+        for (int i = 1; i < m; i++) {
+            while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
+                j = lps[j - 1]; // Nhảy về vị trí phù hợp
+            }
+            if (pattern.charAt(i) == pattern.charAt(j)) {
+                j++;
+                lps[i] = j;
+            }
+        }
+        return lps;
+    }
+
+    // Bước 2: Tìm needle trong haystack bằng KMP
+    public static int strStr(String haystack, String needle) {
+        int n = haystack.length(), m = needle.length();
+        if (m == 0) return 0; // Trường hợp đặc biệt: needle rỗng
+
+        int[] lps = computeLPS(needle);
+        int j = 0; // Chỉ số needle
+
+        for (int i = 0; i < n; i++) {
+            while (j > 0 && haystack.charAt(i) != needle.charAt(j)) {
+                j = lps[j - 1]; // Nhảy theo bảng LPS
+            }
+            if (haystack.charAt(i) == needle.charAt(j)) {
+                j++;
+            }
+            if (j == m) {
+                return i - m + 1; // Tìm thấy needle, trả về vị trí bắt đầu
+            }
+        }
+        return -1; // Không tìm thấy
+    }
+
+    }
+}
