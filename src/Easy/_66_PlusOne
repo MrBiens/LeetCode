@@ -1,0 +1,18 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+       int n = digits.length;
+        
+        for (int i = n - 1; i >= 0; i--) { // Duyệt ngược từ cuối mảng
+            if (digits[i] < 9) {  // Nếu chữ số nhỏ hơn 9
+                digits[i]++;  // Tăng lên 1
+                return digits; // Trả về ngay
+            }
+            digits[i] = 0; // Nếu là 9, chuyển thành 0 và tiếp tục
+        }
+        
+        // Nếu tất cả các số là 9 (ví dụ: 999 -> 1000)
+        int[] result = new int[n + 1];
+        result[0] = 1; // Đặt số 1 ở đầu
+        return result;
+    }
+}
